@@ -1,0 +1,42 @@
+current structure - 
+	- client chooses a game
+	- client chooses either public, createPrivate, or joinPrivate
+		- if public, ask server for next open public room. Server sends.
+		- if createPrivate or joinPrivate, ask server the status of a particular room
+			- If status is not valid, client process restarts.
+
+	- client now has a room code that is their type.
+	- client is hyperlinked to the room.
+	- once there, client informs server of the game that they will be using the room for
+	- server updates room data to reflect that info, as well as the max number of players allowed in that room.
+	- server notifies clients of their roles (cross/nought, etc.)
+	- client updates a param to reflect their role (in order to keep it if a reload occurs)
+	- client sends user moves/bets until the game is completed. 
+	- TODO: have server keep track of current board state
+		- Options: send the entire board every move, or have the server track the board state automatically.
+		- Server-side tracking is probably best.
+		- Server should send board state in event "queryTurn" if room already exists 
+	- Server updates roomdata as people leave or enter the room. 
+
+
+TODO: Create a UI for choosing sending partitions
+
+TODO: Make pages for clients look nice
+
+TODO: Add an animation for hovering over the board and moving the mouse over possible positions.
+
+TODO: Refactor server.js so that the cognitive capacity is manageable (functions are fun).
+
+TODO: Test public room queries: I suspect that there is might be a bug in which the server does not send the correct public room code.  
+
+TODO: have server keep track of current board state, and send that board state in event of reload.
+
+TODO: Fix form on front page such that the submit event is triggered for any button press (or at least, the create/join private buttons).
+
+TODO: Make the back button work (adding params unnessarily fills up history)
+    - Prob have to switch to #data method
+
+TODO: figure out WHY the create room button needs to be pressed twice before it works as intended (note: a false alert is given, and if ignored, the same form data results in intended behavior. also, the first time the form is sent, no matter the data inside, it reads "undefined".)
+
+TODO: Rewrite updateDarkOverlay() and writeImageToCanvas() such that there is less reused code. (Secondary function drawPartition() is already written) 
+	- Also make the overlay function faster by only loading the image once. No need to have an if that runs every tick.   

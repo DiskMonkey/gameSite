@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<style>
+	canvas {
+		background: #7a989f;
+		display: block;
+		margin: 0 auto;
+	}
+</style>
+
+<head>
+	<meta charset="utf-8">
+	<title>Betting TTT</title>
+</head>
+
+<body>
+	<a href="../frontpage/frontpage.html">frontpage</a>
+
+	<p id='coords'>
+		x, y
+	</p>
+
+	<p id="partition">
+		Outside of Box
+	</p>
+
+	<script src="../common/common.js"></script>
+	<script src="../jquery-3.6.0.js"></script>
+	<script src="board.js"></script>
+	<script src="../webSocket/clientWS.js"></script>
+	<script src="clientTTT.js"></script>
+
+	<h3>Bank</h3>
+	<p id="bank">
+		100
+	</p>
+
+	<h3>Opponent Bank</h3>
+	<p id="oppBank">
+		100
+	</p>
+
+	<label for="bet">Your Bet: </label>
+	<input type="number" id="bet" value="50" min="0" max="100">
+	<input type="button" id="submitBet" value="Submit Bet" onclick="makeMove()">
+
+</body>
+
+</html>

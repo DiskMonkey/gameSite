@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>WIP</title>
+</head>
+
+<body>
+	<script src="../webSocket/clientWS.js"></script>
+	<script src="frontpage.js"></script>
+
+	<h1>Frontpage</h1>
+
+	<div>
+		<form id="gameSelect">
+			<label for="game">Games:</label><br>
+
+			<input type="radio" id="ttt" name="game" value="Betting TTT">
+			<label for="ttt">Betting TTT</label><br>
+
+			<input type="radio" id="test" name="game" value="Test">
+			<label for="test">Test</label><br>
+		</form> <br>
+	</div>
+
+	<div>
+		<button type="button" onclick="joinPublic()">Join Random Public Game</button> 
+		<button type="button" onclick="toggleRoomCodeVis()">Join/Create Private Game</button>
+		<br><br>
+	</div>
+	
+	<!-- Form is being improperly used here: none of the buttons actually use the "submit" event. This means that any restrictions on "game code" are ignored. MUST FIX -->
+	<div id="privateRoomForm" style="display: none;">
+		<form id="roomCodeForm">
+			<label for="roomCode">Game Code (Leave empty for random code. No special characters.):</label><br>
+			<input type="text" id="roomCode" name="roomCode" maxlength="10" minlength="6" pattern="^[a-zA-Z0-9_]*$" >
+		</form>
+
+		<p>
+			<button type="button" onclick="joinPrivate()">Join Private Game</button>
+			<button type="button" onclick="createPrivate()">Create Private Game</button>
+		</p>
+	</div>
+
+
+</body>
+
+</html>

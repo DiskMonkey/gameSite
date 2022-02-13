@@ -1,0 +1,11 @@
+{
+	"name": "chatserver",
+	"version": "0.0.1",
+	"scripts": {
+		"start": "node websocket/server.js"
+	},
+	"dependencies": {
+		"express": "^4.17.2",
+		"ws": "^7.2.3"
+	}
+}
