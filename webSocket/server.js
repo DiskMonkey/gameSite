@@ -2,8 +2,6 @@ const http = require('http');
 const express = require('express');
 const WebSocket = require('ws');
 
-//Test
-
 const port = 5050; //consider using port 80 or 443 due to problems with firewalls/proxies. Cannot listen on the same port that is hosting the live server.
 const server = http.createServer(express);
 
