@@ -2,7 +2,7 @@ function initWebSocket()
 {
 	return new Promise(function (resolve, reject)
 	{
-		var ws = new WebSocket('ws://localhost:5050'); 
+		var ws = new WebSocket('ws://54.146.153.45:5050'); 
 		ws.onopen = () =>
 		{
 			console.log('Connection opened!');
