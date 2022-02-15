@@ -2,7 +2,7 @@ function initWebSocket()
 {
 	return new Promise(function (resolve, reject)
 	{
-		var ws = new WebSocket('ws://54.146.153.45:5050'); 
+		var ws = new WebSocket('ws://54.146.153.45:5050'); //this is ip specific. REMEMBER TO UPDATE WITH EACH NEW INSTANCE
 		ws.onopen = () =>
 		{
 			console.log('Connection opened!');
