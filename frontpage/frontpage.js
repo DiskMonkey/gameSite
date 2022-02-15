@@ -35,7 +35,7 @@ function createURL()
 	switch (gameSelect)
 	{
 		case "Betting TTT":
-			urlBuilder += "ttt/clientTTT.html";
+			urlBuilder += "ttt";
 			break;
 		case "Test":
 			break;
@@ -48,12 +48,12 @@ function createURL()
 
 function publicURLPromise()
 {
-	var urlBuilder = "../";
+	var urlBuilder = "";
 
 	switch (gameSelect)
 	{
 		case "Betting TTT":
-			urlBuilder += "ttt/clientTTT.html";
+			urlBuilder += "ttt";
 			break;
 		case "Test":
 			break;

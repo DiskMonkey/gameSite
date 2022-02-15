@@ -169,12 +169,12 @@ function writeImageToCanvas(partitionLocal, isCross)
 
 	if (isCross)
 	{
-		base_image.src = "../assets/cross.png";
+		base_image.src = "cross.png";
 		gameBoard[partitionLocal[1]][partitionLocal[0]] = "X";
 	}
 	else
 	{
-		base_image.src = "../assets/nought.png";
+		base_image.src = "nought.png";
 		gameBoard[partitionLocal[1]][partitionLocal[0]] = "O";
 	}
 
@@ -203,12 +203,12 @@ function updateDarkOverlay() //updates the indicator of the submitted move
 
 		if (playerIsCross)
 		{
-			base_image.src = "../assets/crossDark.png";
+			base_image.src = "crossDark.png";
 			//gameBoard[partitionLocal[1]][partitionLocal[0]] = "X";
 		}
 		else
 		{
-			base_image.src = "../assets/noughtDark.png";
+			base_image.src = "noughtDark.png";
 			//gameBoard[partitionLocal[1]][partitionLocal[0]] = "O";
 		}
 
@@ -230,7 +230,7 @@ function removeOldDark()
 	
 	if (oldPartition != partition && oldPartitionInsideBox && gameBoard[oldPartition[1]][oldPartition[0]] == -1) //this makes great use of short circuits
 	{
-		base_image.src = "../assets/emptySquare.png";
+		base_image.src = "emptySquare.png";
 		drawInPartition(base_image, oldPartition);
 	}
 }
@@ -260,12 +260,12 @@ function setMove()
 
 	if (playerIsCross)
 	{
-		newImage.src = "../assets/crossDark.png";
+		newImage.src = "crossDark.png";
 		//gameBoard[partitionLocal[1]][partitionLocal[0]] = "X";
 	}
 	else
 	{
-		newImage.src = "../assets/noughtDark.png";
+		newImage.src = "noughtDark.png";
 		//gameBoard[partitionLocal[1]][partitionLocal[0]] = "O";
 	}
 	
@@ -287,7 +287,7 @@ function clearChosenMove()
 	if (gameBoard[chosenMove[1]][chosenMove[0]] == -1)
 	{
 		let replacement = new Image();
-		replacement.src = "../assets/emptySquare.png";
+		replacement.src = "emptySquare.png";
 		drawInPartition(replacement, chosenMove);
 		chosenMove = ["Unchosen"];
 	}

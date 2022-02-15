@@ -1,19 +1,9 @@
 const http = require('http');
 const express = require('express');
 const WebSocket = require('ws');
+const startWebServer = require("../index.js");
 
-const portTest = process.env.PORT || 3000;
-
-const serverTest = http.createServer((req, res) => {
-  res.statusCode = 200;
-  const msg = 'Hello Node!\n'
-  res.end(msg);
-});
-
-serverTest.listen(portTest, () => {
-  console.log(`Server running on http://localhost:${portTest}/`);
-});
-
+startWebServer.startWebServer();
 
 const port = 5050; //consider using port 80 or 443 due to problems with firewalls/proxies. Cannot listen on the same port that is hosting the live server.
 const server = http.createServer(express);

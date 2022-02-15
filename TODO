@@ -18,6 +18,7 @@ current structure -
 		- Server should send board state in event "queryTurn" if room already exists 
 	- Server updates roomdata as people leave or enter the room. 
 
+TODO: Rewrite all page requests/changes such that they use the express method of "res.sendFile()".
 
 TODO: Create a UI for choosing sending partitions
 
@@ -33,7 +34,7 @@ TODO: have server keep track of current board state, and send that board state i
 
 TODO: Fix form on front page such that the submit event is triggered for any button press (or at least, the create/join private buttons).
 
-TODO: Make the back button work (adding params unnessarily fills up history)
+TODO: Make the back button work (adding params unnecessarily fills up history)
     - Prob have to switch to #data method
 
 TODO: figure out WHY the create room button needs to be pressed twice before it works as intended (note: a false alert is given, and if ignored, the same form data results in intended behavior. also, the first time the form is sent, no matter the data inside, it reads "undefined".)
