@@ -5,13 +5,12 @@ var startWebServer = function startWebServer()
 	
 	const app = express();
 	const port = process.env.PORT || 3000;
-	
-	
-	app.use(express.static('webSocket'));
-	app.use(express.static('common'));
-	app.use(express.static('assets'));
-	app.use(express.static('ttt'));
-	app.use(express.static('frontpage'));
+
+	app.use(express.static(path.join(__dirname, 'webSocket')));
+	app.use(express.static(path.join(__dirname, 'common')));
+	app.use(express.static(path.join(__dirname, 'assets')));
+	app.use(express.static(path.join(__dirname, 'ttt')));
+	app.use(express.static(path.join(__dirname, 'frontpage')));
 	
 	app.listen(port);
 	
