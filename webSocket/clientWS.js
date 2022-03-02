@@ -2,7 +2,7 @@ function initWebSocket()
 {
 	return new Promise(function (resolve, reject)
 	{
-		var ws = new WebSocket('ws://54.146.153.45:5050'); //this is ip specific. REMEMBER TO UPDATE WITH EACH NEW INSTANCE
+		var ws = new WebSocket('ws://35.173.136.120:5050'); //this is ip specific. REMEMBER TO UPDATE WITH EACH NEW INSTANCE. Public IPv4 address
 		ws.onopen = () =>
 		{
 			console.log('Connection opened!');
