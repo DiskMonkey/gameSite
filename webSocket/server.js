@@ -13,6 +13,7 @@ const wss = new WebSocket.Server({ server });
 var clientIDs = [];
 var numOfClients;
 var rooms = new Map();
+rooms.set("", ""); //to avoid empty key rooms
 
 wss.on('connection', function connection(ws)
 {
@@ -227,7 +228,7 @@ function getRoomCodeAvail(code, gameType)
 		while (true)
 		{
 			var randCode = makeid(10);
-			if (!privateRooms.has(randCode))
+			if (!rooms.has(randCode))
 			{
 				return randCode;
 			}

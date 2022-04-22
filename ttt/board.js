@@ -150,6 +150,7 @@ function onBetResult(moveString)
 
 	document.getElementById("bank").innerText = newBankVal;
 	document.getElementById("oppBank").innerText = newOppBankVal;
+	updateSlider();
 
 	//in case submit bet is updated to use a form, make sure to update its min and max values right here. Currently, an alert is triggered when an invalid bet is given.
 	clearChosenMove();

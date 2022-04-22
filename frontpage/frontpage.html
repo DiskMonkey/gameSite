@@ -3,43 +3,156 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>WIP</title>
+	<title>Odd Games</title>
 </head>
+
+<style>
+	.header {
+		padding: 60px;
+
+		text-align: center;
+		background: #1abc9c;
+		color: white;
+		font-size: 30px;
+	}
+
+	.button {
+		background-color: #999999;
+		/* Green */
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		border-radius: 8px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: auto;
+		cursor: pointer;
+		transition-duration: 0.4s;
+	}
+
+	.button:hover {
+		background-color: #4CAF50;
+		color: rgb(255, 255, 255);
+	}
+
+	.centerDiv {
+		margin: auto;
+		width: 90%;
+		padding: 10px;
+		text-align: center;
+	}
+
+	.centerButton {
+		margin: auto;
+		width: 10%;
+		padding: 10px;
+	}
+
+	.buttonGame {
+		background-color: #999999;
+		border: none;
+		color: rgb(0, 0, 0);
+		padding: 150px 150px;
+		border-radius: 8px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: auto;
+		cursor: pointer;
+		transition-duration: 0.4s;
+	}
+
+	.buttonGameSelected {
+		background-color: #4CAF50;
+	}
+
+	.input {
+		font-size: 18px;
+		text-align: center;
+	}
+
+	.tooltip {
+		position: relative;
+		display: inline-block;
+		border-bottom: 1px dotted black;
+		/* If you want dots under the hoverable text */
+	}
+
+	/* Tooltip text */
+	.tooltip .tooltiptext {
+		visibility: hidden;
+		width: auto;
+		background-color: black;
+		color: #fff;
+		text-align: center;
+		padding: 5px 0;
+		border-radius: 6px;
+
+		/* Position the tooltip text - see examples below! */
+		position: absolute;
+		z-index: 1;
+
+		width: 120px;
+  		bottom: 100%;
+		left: 50%;
+		margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+
+		opacity: 0;
+  		transition: opacity 1s;
+	}
+
+	/* Show the tooltip text when you mouse over the tooltip container */
+	.tooltip:hover .tooltiptext {
+		visibility: visible;
+		opacity: 1;
+	}
+</style>
 
 <body>
 	<script src="clientWS.js"></script>
 	<script src="frontpage.js"></script>
 
-	<h1>Frontpage</h1>
+	<div class="header">
+		<h1>Odd Games</h1>
+		<p>A Collection of Strange Tests of Wit</p>
+	</div>
 
-	<div>
+	<div class="centerDiv">
 		<form id="gameSelect">
-			<label for="game">Games:</label><br>
+			<h1>Select any attraction:</h1>
 
-			<input type="radio" id="ttt" name="game" value="Betting TTT">
-			<label for="ttt">Betting TTT</label><br>
+			<div class="tooltip">
+				<input class="button" type="button" id="ttt" value="Betting Tic-Tac-Toe ❌⭕" onclick="selectTTT()">
+			</div>
+			
 
-			<input type="radio" id="test" name="game" value="Test">
-			<label for="test">Test</label><br>
+			<input class="button" type="button" id="test" value="Sorry, no other games are supported currently!"
+				onclick="selectTest()">
+
 		</form> <br>
 	</div>
 
-	<div>
-		<button type="button" onclick="joinPublic()">Join Random Public Game</button> 
-		<button type="button" onclick="toggleRoomCodeVis()">Join/Create Private Game</button>
+	<div class="centerDiv">
+		<button type="button" class="button" onclick="joinPublic()">Join Random Public Game</button>
+		<button type="button" class="button" onclick="toggleRoomCodeVis()">Join/Create Private Game</button>
 		<br><br>
 	</div>
-	
-	<!-- Form is being improperly used here: none of the buttons actually use the "submit" event. This means that any restrictions on "game code" are ignored. MUST FIX -->
-	<div id="privateRoomForm" style="display: none;">
+
+	<!-- Note to self: fix form. I think it is being improperly used here: none of the buttons actually use the "submit" event. This means that any restrictions on "game code" are ignored. MUST FIX -->
+	<div id="privateRoomForm" style="display: none;" class="centerDiv">
 		<form id="roomCodeForm">
-			<label for="roomCode">Game Code (Leave empty for random code. No special characters.):</label><br>
-			<input type="text" id="roomCode" name="roomCode" maxlength="10" minlength="6" pattern="^[a-zA-Z0-9_]*$" >
+			<label for="roomCode" class="input">Game Code (Leave empty for random code. No special
+				characters.):</label><br>
+			<input type="text" id="roomCode" name="roomCode" maxlength="10" minlength="6" pattern="^[a-zA-Z0-9_]*$"
+				class="input">
 		</form>
 
 		<p>
-			<button type="button" onclick="joinPrivate()">Join Private Game</button>
-			<button type="button" onclick="createPrivate()">Create Private Game</button>
+			<button type="button" class="button" onclick="joinPrivate()">Join Private Game</button>
+			<button type="button" class="button" onclick="createPrivate()">Create Private Game</button>
 		</p>
 	</div>
 

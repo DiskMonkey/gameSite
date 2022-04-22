@@ -8,6 +8,11 @@ initWebSocket().then(function querytttRooms(ws)
 	wsGlobal = ws;
 	var urlParams = new URLSearchParams(window.location.search);
 	roomCode = urlParams.get("room");
+
+	var secretCode = document.getElementById("secretCode");
+	var secretCodePre = secretCode.innerHTML
+	secretCode.innerHTML = secretCodePre + roomCode;
+
 	playerIsCross = urlParams.get("player"); //this value is purely cosmetic.
 
 	console.log(ws)
@@ -44,5 +49,4 @@ function sendMove(partition, bet)
 		onBetResult(data);
 	});
 }
-
 

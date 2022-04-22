@@ -13,19 +13,34 @@ function toggleRoomCodeVis()
 var gameSelect;
 function isGameChosen()
 {
-	var gameSelectExists = document.querySelector('input[name="game"]:checked');
-
-	if (gameSelectExists == null)
+	if (gameSelect == null)
 	{
 		alert("Please choose a game.");
 		return false;
 	}
 	else
 	{
-		gameSelect = gameSelectExists.value;
 		return true;
 	}
 }
+
+
+
+function selectTTT()
+{
+	gameSelect = "Betting TTT";
+	var tttBox = document.getElementById("ttt");
+	tttBox.classList.add("buttonGameSelected");
+}
+function selectTest()
+{
+	gameSelect = null;
+}
+function removeOtherSelections()
+{
+	//TBD	
+}
+
 
 var roomCode; //needs to be global to send room code to server later
 function createURL()
@@ -69,6 +84,23 @@ function publicURLPromise()
 			resolve(urlBuilder);
 		});
 	})
+}
+
+function createPrivateURL(code)
+{
+	var urlBuilder = "";
+	switch (gameSelect)
+	{
+		case "Betting TTT":
+			urlBuilder += "ttt";
+			break;
+		case "Test":
+			break;
+	}
+	
+	urlBuilder += "?room=" + code;
+
+	return urlBuilder;
 }
 
 
@@ -133,15 +165,21 @@ function onReceive(data)
 			}
 			break;
 		case "createprivate": //room param might be empty
-			if (data == "Valid Room Code")
-			{
-				ws.close();
-				window.location.href = url;
-			}
-			else
+			if (data == "Room Not Available")
 			{
 				window.alert("Game Code already in use. Please choose a different code.");
 			}
+			else
+			{
+				ws.close();
+				if (data == "Valid Room Code")
+				{
+					window.location.href = url;
+				}
+				else
+				{
+					window.location.href = createPrivateURL(data);
+				}
+			}
 	}
 }
-

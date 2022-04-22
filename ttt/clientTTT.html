@@ -6,6 +6,143 @@
 		display: block;
 		margin: 0 auto;
 	}
+
+	.header{
+		padding: 10px;
+		background: #0d5345;
+	}
+
+	.back
+	{
+		color: rgb(255, 255, 255);
+		transition-duration: 0.4s;
+	}
+
+	.back:hover {
+  		background-color: #646464;
+  		color: rgb(252, 90, 90);
+	}
+
+	.hide
+	{
+		display: none;
+	}
+
+	.bank
+	{
+		display: inline-block;
+		width: 50%;
+		text-align: center;
+		background-color: #25c7405b;
+		transition-duration: 0.4s;
+	}
+
+	.bank:hover
+	{
+		background-color: #25c740bd;
+	}
+
+	.opbank
+	{
+		background-color: #c725255b;
+		text-align: center;
+		display: inline-block;
+		width:49.5%;
+		transition-duration: 0.4s;
+	}
+
+	.opbank:hover
+	{
+		background-color: #c72525a8;
+	}
+
+	.center
+	{
+		margin: auto;
+		text-align: center;
+	}
+
+	.input
+	{
+		font-size: 18px;
+		text-align: center;
+	}
+
+	.slidecontainer {
+	width: 100%; /* Width of the outside container */
+	}
+
+	/* The slider itself */
+	.slider {
+	-webkit-appearance: none;  /* Override default CSS styles */
+	appearance: none;
+	width: 100%; /* Full-width */
+	height: 25px; /* Specified height */
+	background: #d3d3d3; /* Grey background */
+	outline: none; /* Remove outline */
+	opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+	-webkit-transition: .2s; /* 0.2 seconds transition on hover */
+	transition: opacity .2s;
+	}
+
+	/* Mouse-over effects */
+	.slider:hover {
+	opacity: 1; /* Fully shown on mouse-over */
+	}
+
+	/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+	.slider::-webkit-slider-thumb {
+	-webkit-appearance: none; /* Override default look */
+	appearance: none;
+	width: 25px; /* Set a specific slider handle width */
+	height: 25px; /* Slider handle height */
+	background: #035537; /* Green background */
+	cursor: pointer; /* Cursor on hover */
+	}
+
+	.slider::-moz-range-thumb {
+	width: 25px; /* Set a specific slider handle width */
+	height: 25px; /* Slider handle height */
+	background: #035537; /* Green background */
+	cursor: pointer; /* Cursor on hover */
+	}
+
+	.button {
+			background-color: #999999; /* Green */
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			border-radius: 8px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: auto;
+			cursor: pointer;
+			transition-duration: 0.4s;
+		}
+	.button:hover {
+			background-color: #4CAF50;
+			color: rgb(255, 255, 255);
+		}
+	
+	.secretCode{
+		background-color: rgb(255, 255, 255);
+		color: rgb(8, 8, 8);
+		width: 90%;
+		transition-duration: .4s;
+		font-size: large;
+	}
+
+	.explain{
+		background-color: #03553749;
+		font-size: larger;
+		transition-duration: 0.4s;
+	}
+	.explain:hover{
+		background-color: #00b37146;
+	}
+
 </style>
 
 <head>
@@ -13,37 +150,75 @@
 	<title>Betting TTT</title>
 </head>
 
-<body>
-	<a href="/">frontpage</a>
+<div class="header">
+	<a href="/" class="back"> ⬅ Back to main page </a>
+</div>
 
-	<p id='coords'>
+<div class="hide">
+	<p id="coords">
 		x, y
 	</p>
 
 	<p id="partition">
 		Outside of Box
 	</p>
+</div>
 
+<br>
+
+<body>
 	<script src="common.js"></script>
 	<script src="jquery-3.6.0.js"></script>
 	<script src="board.js"></script>
 	<script src="clientWS.js"></script>
 	<script src="clientTTT.js"></script>
 
-	<h3>Bank</h3>
-	<p id="bank">
-		100
-	</p>
 
-	<h3>Opponent Bank</h3>
-	<p id="oppBank">
-		100
-	</p>
+	<div class="bank">
+		<h3>Your Balance</h3>
+		<p id="bank">
+			100
+		</p>
+	</div>
 
-	<label for="bet">Your Bet: </label>
-	<input type="number" id="bet" value="50" min="0" max="100">
-	<input type="button" id="submitBet" value="Submit Bet" onclick="makeMove()">
+	<div class="opbank">
+		<h3>Opponent Balance</h3>
+		<p id="oppBank">
+			100
+		</p>
+	</div>
+	
+	<br>
 
+	<div class="center input">
+		<label for="bet">Your Bet: </label>
+		<input class="input" type="number" id="bet" value="50" min="0" max="100">
+		<div class="slidecontainer">
+			<input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+		</div>
+		<input class="button" type="button" id="submitBet" value="Submit Bet" onclick="makeMove()">
+	</div>
+
+	<script src="slider.js"></script>
 </body>
+
+<br>
+<br>
+<br>
+
+<p class="secretCode" id="secretCode">
+	Send this gamecode to your friends to let them join:
+</p>
+
+<div class="explain">
+	<p>
+		The game is simple: every turn, you must auction the next move. Click "Submit Bet" to finalize your decision. 
+		Whoever puts more money on the table gets to make the next move, but must pay that amount to the other player.
+	</p>
+	<p>
+		You may not go into debt. Notice that if your opponent successfully manages to bankrupt you, they can easily win any further moves, which would lose you the game.
+		Choose your bets wisely, and you can corner your opponent into a hole they cannot escape.
+	</p>
+</div>
 
 </html>
