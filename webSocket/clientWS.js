@@ -2,7 +2,7 @@ function initWebSocket()
 {
 	return new Promise(function (resolve, reject)
 	{
-		var ws = new WebSocket('ws://172.31.26.18:5050'); //this is ip specific. REMEMBER TO UPDATE WITH EACH NEW INSTANCE. Public IPv4 address
+		var ws = new WebSocket('ws://52.207.149.38:5050'); //this is ip specific. REMEMBER TO UPDATE WITH EACH NEW INSTANCE. Public IPv4 address
 		//old was 'ws://35.173.136.120:5050'. Update with every tmux session
 		ws.onopen = () =>
 		{
