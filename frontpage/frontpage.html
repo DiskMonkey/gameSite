@@ -109,6 +109,24 @@
 		visibility: visible;
 		opacity: 1;
 	}
+
+	.hide{
+		display: none;
+		opacity: 0;
+		transition-duration: 0.4s;
+	}
+
+	.exist{
+		opacity: 0;
+		display: block;
+		transition-duration: 0.4s;
+	}
+
+	.appear{
+		opacity: 1;
+		display: block;
+		transition-duration: 0.4s;
+	}
 </style>
 
 <body>
@@ -142,7 +160,7 @@
 	</div>
 
 	<!-- Note to self: fix form. I think it is being improperly used here: none of the buttons actually use the "submit" event. This means that any restrictions on "game code" are ignored. MUST FIX -->
-	<div id="privateRoomForm" style="display: none;" class="centerDiv">
+	<div id="privateRoomForm" class="centerDiv hide">
 		<form id="roomCodeForm">
 			<label for="roomCode" class="input">Game Code (Leave empty for random code. No special
 				characters.):</label><br>

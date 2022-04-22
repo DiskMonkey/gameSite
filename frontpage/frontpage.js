@@ -3,9 +3,12 @@ function toggleRoomCodeVis()
 {
 	var roomCodeBox = document.getElementById("privateRoomForm");
 
-	if (roomCodeBox.style.display == "none")
+	if (roomCodeBox.classList.contains("hide"))
 	{
-		roomCodeBox.style.display = "inline";
+		roomCodeBox.classList.remove("hide");
+		roomCodeBox.classList.add("exist")
+
+		setTimeout(() => { roomCodeBox.classList.add("appear");}, 20);
 	}
 
 }
